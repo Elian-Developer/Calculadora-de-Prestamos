@@ -1,0 +1,83 @@
+﻿@model Prestamos_App.ViewModel.PrestamosViewModel
+
+@{
+    ViewData["Title"] = "Home";
+    var cuotas = (string)ViewData["cuotas"];
+}
+
+
+<div class="row mb-5">
+    <div class="col-md-12 text-black">
+       @* <center><h1><i>Calculadora de Prestamos Personales</i></h1></center>*@
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-6 offset-3">
+        <div class="card">
+            <div style="" class="card-header text-white bg-black">
+                <center><h2><i>Prestamos Personales</i></h2></center>
+            </div>
+            <div class="card-body">
+
+                <form method="post" asp-controller="Prestamos" asp-action="Index">
+
+                    <div class="mb-3">
+                        <label asp-for="monto" class="form-label">Monto del Prestamo:</label>
+                        <input asp-for="monto" class="form-control" type="number" required min="1000"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TasaPrestamo" class="form-label">Tipo de Prestamo:</label>
+                        <select asp-for="TasaPrestamo" class="form-select" id="Tipoprestamo">
+                            <option value="22">Prestamo Personal</option>
+                            <option value="12">Prestamo Automóvil</option>
+                            <option value="8">Prestamo Hipotecario</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">Tasa de interés (%):</label>
+                        <input class="form-control" id="interes" type="text" disabled />
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Periodo" class="form-label">Cantidad de Meses:</label>
+                        <select asp-for="Periodo" class="form-select">
+                            <option value="12">12 meses</option>
+                            <option value="18">18 meses</option>
+                            <option value="24">24 meses</option>
+                            <option value="30">30 meses</option>
+                            <option value="36">36 meses</option>
+                            <option value="42">42 meses</option>
+                            <option value="48">48 meses</option>
+                            <option value="54">54 meses</option>
+                            <option value="60">60 meses</option>
+                            <option value="66">66 meses</option>
+                            <option value="72">72 meses</option>
+                            <option value="78">78 meses</option>
+                            <option value="84">84 meses</option>
+                            <option value="90">90 meses</option>
+                            <option value="96">96 meses</option>
+                            <option value="102">102 meses</option>
+                            <option value="108">108 meses</option>
+                            <option value="114">114 meses</option>
+                            <option value="120">120 meses</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-outline-primary float-end">Calcular</button>
+
+                </form>
+
+            </div>
+
+            <div class="card-footer">
+                <h5 style="text-align:center;"><i>Tus Cuotas a pagar son de:</i> </h5> <h5 style="color:black; text-align:center;"><i>$@cuotas</i></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
